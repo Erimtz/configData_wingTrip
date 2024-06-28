@@ -1,0 +1,59 @@
+server:
+  port: 8078
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: msaccount
+          uri: lb://api-account
+          predicates:
+            - Path=/api/v1/account/**
+        - id: msbooking
+          uri: lb://api-booking
+          predicates:
+            - Path=/api/v1/booking/**
+        - id: msflight
+          uri: lb://api-flight
+          predicates:
+            - Path=/api/v1/flight/**
+        - id: msflightDetail
+          uri: lb://api-flight-detail
+          predicates:
+            - Path=/api/v1/flight-detail/**
+        - id: mspayment
+          uri: lb://api-payment
+          predicates:
+            - Path=/api/v1/payment/**
+        - id: msseat
+          uri: lb://api-seat
+          predicates:
+            - Path=/api/v1/seat/**
+        - id: msuser
+          uri: lb://api-user
+          predicates:
+            - Path=/api/v1/user/**
+
+info:
+  app:
+    name: ${spring.application.name}
+
+eureka:
+  client:
+    registerWithEureka: false
+    fetchRegistry: true
+    serviceURL:
+      defaultZone: http://localhost:8761/eureka
+management:
+  endpoint:
+    gateway:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: api-gateway
