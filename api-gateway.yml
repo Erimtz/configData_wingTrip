@@ -10,31 +10,31 @@ spring:
         locator:
           enabled: true
       routes:
-        - id: msaccount
+        - id: ms-account
           uri: lb://api-account
           predicates:
             - Path=/api/v1/account/**
-        - id: msbooking
+        - id: ms-booking
           uri: lb://api-booking
           predicates:
             - Path=/api/v1/booking/**
-        - id: msflight
+        - id: ms-flight
           uri: lb://api-flight
           predicates:
             - Path=/api/v1/flight/**
-        - id: msflightDetail
+        - id: ms-flightDetail
           uri: lb://api-flight-detail
           predicates:
             - Path=/api/v1/flight-detail/**
-        - id: mspayment
+        - id: ms-payment
           uri: lb://api-payment
           predicates:
             - Path=/api/v1/payment/**
-        - id: msseat
+        - id: ms-seat
           uri: lb://api-seat
           predicates:
             - Path=/api/v1/seat/**
-        - id: msuser
+        - id: ms-user
           uri: lb://api-user
           predicates:
             - Path=/api/v1/user/**
