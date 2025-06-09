@@ -1,5 +1,5 @@
 server:
-  port: 8078
+  port: 8080
 
 spring:
   application:
@@ -9,15 +9,14 @@ spring:
       discovery:
         locator:
           enabled: true
+          lower-case-service-id: true
       routes:
-        - id: ms-account
-          uri: lb://api-account
-          predicates:
-            - Path=/api/v1/account/**
         - id: ms-user
           uri: lb://api-user
           predicates:
             - Path=/api/v1/user/**
+          filters:
+            - StripPrefix=0
 
 info:
   app:
@@ -28,7 +27,11 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     serviceURL:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://eureka-server:8761/eureka
+  instance:
+    hostname: api-gateway
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 
 management:
   endpoint:
@@ -37,4 +40,4 @@ management:
   endpoints:
     web:
       exposure:
-        include: api-gateway
+        include: gateway,health,info
