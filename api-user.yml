@@ -60,3 +60,5 @@ management:
   health:
     defaults:
       enable: true
+    rabbit:
+      enable: false
