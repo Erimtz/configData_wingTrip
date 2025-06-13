@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="06d19524-c12b-4e65-96db-286518911a34" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api-gateway.yml" beforeDir="false" afterPath="$PROJECT_DIR$/api-gateway.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api-user.yml" beforeDir="false" afterPath="$PROJECT_DIR$/api-user.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

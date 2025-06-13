@@ -28,23 +28,35 @@ info:
     name: api-user
 
 eureka:
-  healthcheck:
-    enabled: true
-  instance:
-    hostname: api-user
-    prefer-ip-address: true
-    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
   client:
     registerWithEureka: true
     fetchRegistry: true
     service-url:
       defaultZone: http://eureka-server:8761/eureka/
+  healthcheck:
+    enabled: true
+    registry-fetch-interval-seconds: 5
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 10
+  instance:
+    hostname: api-user
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    # Configuraciones de heartbeat más frecuentes
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 10
+    # Especifica la URL de health check
+    health-check-url-path: /actuator/health
+    status-page-url-path: /actuator/info
 
 management:
   endpoints:
     web:
       exposure:
-        include: health,info
+        include: health,info,metrics
   endpoint:
     health:
       show-details: always
+  health:
+    defaults:
+      enable: true
