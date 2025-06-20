@@ -6,6 +6,9 @@ spring:
     name: api-user
   zipkin:
     baseUrl: http://zipkin:9411/
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
   datasource:
     url: jdbc:mysql://mysql-user:3306/user_db
     username: ${DATABASE_USERNAME}
@@ -25,7 +28,7 @@ spring:
 
 info:
   application:
-    name: api-user
+    name: ${spring.application.name}
 
 eureka:
   client:
@@ -33,32 +36,13 @@ eureka:
     fetchRegistry: true
     service-url:
       defaultZone: http://eureka-server:8761/eureka/
-  healthcheck:
-    enabled: true
-    registry-fetch-interval-seconds: 5
-    lease-renewal-interval-in-seconds: 5
-    lease-expiration-duration-in-seconds: 10
   instance:
     hostname: api-user
     prefer-ip-address: true
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
-    # Configuraciones de heartbeat más frecuentes
-    lease-renewal-interval-in-seconds: 5
-    lease-expiration-duration-in-seconds: 10
-    # Especifica la URL de health check
-    health-check-url-path: /actuator/health
-    status-page-url-path: /actuator/info
 
 management:
   endpoints:
     web:
       exposure:
         include: health,info,metrics
-  endpoint:
-    health:
-      show-details: always
-  health:
-    defaults:
-      enable: true
-    rabbit:
-      enable: false
