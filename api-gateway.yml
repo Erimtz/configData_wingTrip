@@ -17,6 +17,12 @@ spring:
             - Path=/api/v1/user/**
           filters:
             - StripPrefix=0
+        - id: ms-booking
+          uri: lb://api-booking
+          predicates:
+            - Path=/api/v1/booking/**
+          filters:
+            - StripPrefix=0
 
 info:
   app:
