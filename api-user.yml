@@ -11,8 +11,8 @@ spring:
       - org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
   datasource:
     url: jdbc:mysql://mysql-user:3306/user_db
-    username: ${DATABASE_USERNAME}
-    password: ${DATABASE_PASSWORD}
+    username: ${USER_DB_USER}
+    password: ${USER_DB_PASS}
     driverClassName: com.mysql.cj.jdbc.Driver
   jpa:
     show-sql: true

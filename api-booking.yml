@@ -11,8 +11,8 @@ spring:
       - org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
   datasource:
     url: jdbc:mysql://mysql-booking:3306/booking_db
-    username: ${DATABASE_USERNAME}
-    password: ${DATABASE_PASSWORD}
+    username: ${BOOKING_DB_USER}
+    password: ${BOOKING_DB_PASS}
     driverClassName: com.mysql.cj.jdbc.Driver
   jpa:
     show-sql: true
