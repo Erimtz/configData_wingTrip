@@ -10,7 +10,7 @@ spring:
     exclude:
       - org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
   datasource:
-    url: jdbc:mysql://mysql-user:3306/user_db
+    url: jdbc:mysql://mysql-booking:3306/booking_db
     username: ${DATABASE_USERNAME}
     password: ${DATABASE_PASSWORD}
     driverClassName: com.mysql.cj.jdbc.Driver
@@ -37,7 +37,7 @@ eureka:
     service-url:
       defaultZone: http://eureka-server:8761/eureka/
   instance:
-    hostname: api-user
+    hostname: api-booking
     prefer-ip-address: true
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 
