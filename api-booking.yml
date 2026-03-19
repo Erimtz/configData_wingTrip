@@ -6,9 +6,6 @@ spring:
     name: api-booking
   zipkin:
     baseUrl: http://zipkin:9411/
-  autoconfigure:
-    exclude:
-      - org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
   datasource:
     url: jdbc:mysql://mysql-booking:3306/booking_db
     username: ${BOOKING_DB_USER}
@@ -25,6 +22,11 @@ spring:
       mode: always
       schema-locations: classpath:schema.sql
       data-locations: classpath:data.sql
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+    username: ${RABBITMQ_USERNAME}
+    password: ${RABBITMQ_PASSWORD}
 
 info:
   application:

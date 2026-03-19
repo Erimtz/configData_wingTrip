@@ -6,9 +6,6 @@ spring:
     name: api-payment
   zipkin:
     baseUrl: http://zipkin:9411/
-  autoconfigure:
-    exclude:
-      - org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
   datasource:
     url: jdbc:mysql://mysql-payment:3306/payment_db
     username: ${PAYMENT_DB_USER}
@@ -28,8 +25,8 @@ spring:
   rabbitmq:
     host: rabbitmq
     port: 5672
-    username: ${RABBITMQ_USER}
-    password: ${RABBITMQ_PASS}
+    username: ${RABBITMQ_USERNAME}
+    password: ${RABBITMQ_PASSWORD}
 
   resilience4j:
     circuitBreaker:
