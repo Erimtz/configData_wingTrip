@@ -1,0 +1,39 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-flight
+  zipkin:
+    baseUrl: http://zipkin:9411/
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
+  data:
+    mongodb:
+      uri: mongodb://${MONGODB_USER}:${MONGODB_PASSWORD}@mongodb-flight:27017/flight_db?authSource=admin
+      auto-index-creation: true
+      socket-timeout-ms: 30000
+      connection-timeout-ms: 10000
+      server-selection-timeout-ms: 5000
+
+info:
+  application:
+    name: ${spring.application.name}
+
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka/
+  instance:
+    hostname: api-flight
+    prefer-ip-address: true
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
