@@ -23,6 +23,24 @@ spring:
             - Path=/api/v1/booking/**
           filters:
             - StripPrefix=0
+        - id: ms-payment
+          uri: lb://api-payment
+          predicates:
+            - Path=/api/v1/payment/**
+          filters:
+            - StripPrefix=0
+        - id: ms-flight
+          uri: lb://api-flight
+          predicates:
+            - Path=/api/v1/flight/**
+          filters:
+            - StripPrefix=0
+        - id: ms-flight-details
+          uri: lb://api/flight-details
+          predicates:
+            - Path=/api/v1/flight-details/**
+          filters:
+            - StripPrefix=0
 
 info:
   app:
