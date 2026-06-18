@@ -6,9 +6,6 @@ spring:
     name: api-flight-details
   zipkin:
     baseUrl: http://zipkin:9411/
-  autoconfigure:
-    exclude:
-      - org.springframework.boot.autoconfigure.amqp.RabbitAutoConfiguration
   data:
     mongodb:
       uri: mongodb://${MONGODB_USER}:${MONGODB_PASSWORD}@mongodb-flight-details:27017/flight_details_db?authSource=admin
